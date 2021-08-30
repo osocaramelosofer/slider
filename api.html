@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./api.css">
+</head>
+
+<body>
+    <div class="card">
+        <div class="card__content">
+
+            <div class="image__container">
+                <img class="image" id="imagen" src="" alt="">
+            </div>
+
+            <span>Nombre: <span id="nombre" class="name">Nombre</span></span>
+            <br>
+            <span>Tipo: <span id="type" class="type">Tipo </span></span>
+            <br>
+            <span>Peso: <span id="weight">Peso</span> Kg.</span>
+
+        </div>
+    </div>
+
+
+    <script>
+
+        const url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`
+
+        fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            nombre = document.getElementById("nombre");
+            nombre.innerHTML = data.name
+            
+            img = document.getElementById('imagen');
+            img.src = data.sprites.front_default
+
+            type = document.getElementById('type');
+            type.innerHTML = data.types[0].type.name
+
+            peso = document.getElementById('weight');
+            peso.innerHTML = data.weight;
+
+        }).catch(function (error) {
+            alert("Error pokemon no encontrado")
+        });
+    </script>
+</body>
+
+</html>
