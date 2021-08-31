@@ -29,11 +29,13 @@
 
     <script>
 
-        const url = `https://pokeapi.co/api/v2/pokemon/bulbasaur`
+        const base_url = `https://pokeapi.co/api/v2/pokemon/`
+        const idPokemon = prompt('Ingresa el numero del pokemon')
+        const url = base_url + idPokemon
 
-        fetch(url).then(function (response) {
+        fetch(url).then( (response)=> {
             return response.json();
-        }).then(function (data) {
+        }).then( (data)=> {
             nombre = document.getElementById("nombre");
             nombre.innerHTML = data.name
             
